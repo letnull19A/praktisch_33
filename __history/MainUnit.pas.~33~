@@ -1,0 +1,106 @@
+unit MainUnit;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ComCtrls,
+  System.Generics.Collections;
+
+type
+  TForm1 = class(TForm)
+    RichEdit1: TRichEdit;
+    RichEdit2: TRichEdit;
+    Button1: TButton;
+    Button2: TButton;
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+  private
+    _differentStrings: TList<integer>;
+  public
+    procedure CompareText(ignoreCase: boolean);
+    procedure GetDifferences();
+    function GetDifferent(): TList<integer>;
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+function TForm1.GetDifferent(): TList<integer>;
+begin
+  Result := _differentStrings;
+end;
+
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+  CompareText(false);
+  GetDifferences();
+end;
+
+procedure TForm1.Button2Click(Sender: TObject);
+begin
+  CompareText(true);
+  GetDifferences();
+end;
+
+procedure TForm1.CompareText(ignoreCase: boolean);
+begin
+
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  _differentStrings := TList<integer>.Create;
+end;
+
+procedure TForm1.FormDestroy(Sender: TObject);
+begin
+  _differentStrings.Free();
+end;
+
+function GetIndexFirstChar(const text: TStrings;
+  const lineIndex: integer): integer;
+var
+  i: integer;
+begin
+  Result := 0;
+
+  for i := 0 to lineIndex - 1 do
+    Result := Result + Length(text[i]) + 1;
+end;
+
+procedure ShowTextLines(const richEdit: TRichEdit);
+var
+  index: integer;
+begin
+  richEdit.SelectAll;
+  richEdit.SelAttributes.Color := clBlack;
+
+  for index in Form1.GetDifferent() do
+    if index < richEdit.Lines.Count then
+    begin
+      richEdit.SelStart := GetIndexFirstChar(richEdit.Lines, index);
+      richEdit.SelLength := Length(richEdit.Lines[index]);
+      richEdit.SelAttributes.Color := clRed;
+    end;
+end;
+
+procedure TForm1.GetDifferences();
+begin
+  ShowTextLines(RichEdit1);
+  ShowTextLines(RichEdit2);
+  RichEdit1.PlainText := true;
+  ShowMessage(RichEdit1.Lines.text);
+  RichEdit1.PlainText := false;
+  RichEdit1.Lines.SaveToFile('..\..\tst.txt');
+  ShowMessage(RichEdit1.Lines[RichEdit1.Lines.Count - 1]);
+end;
+
+end.

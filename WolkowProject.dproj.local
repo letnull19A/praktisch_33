@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2022/08/22 14:49:14.000.990,=D:\Desktop\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/11/09 09:51:15.000.116,=D:\Desktop\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/11/16 01:49:08.000.264,=D:\Desktop\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/11/16 02:02:11.000.466,D:\Others\Delphi\project001\MainUnit.pas=D:\Desktop\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/11/16 02:02:11.000.466,D:\Others\Delphi\project001\MainUnit.dfm=D:\Desktop\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2022/11/16 02:03:41.000.454,D:\Desktop\Documents\Embarcadero\Studio\Projects\WolkowProject.dproj=D:\Desktop\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2022/11/16 09:20:07.000.363,D:\Others\Delphi\project001\WolkowProject.dproj=D:\Desktop\Documents\Embarcadero\Studio\Projects\WolkowProject.dproj</Transaction>
+  </Transactions>
+</BorlandProject>

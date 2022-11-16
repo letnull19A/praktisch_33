@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{AD93DE81-E88B-40EB-875E-F5FBC138505D}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="WolkowProject.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="D:\Desktop\Documents\Embarcadero\Studio\Projects\Test\WolkowProjectTests.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="WolkowProject">
+        <MSBuild Projects="WolkowProject.dproj"/>
+    </Target>
+    <Target Name="WolkowProject:Clean">
+        <MSBuild Projects="WolkowProject.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="WolkowProject:Make">
+        <MSBuild Projects="WolkowProject.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="WolkowProjectTests">
+        <MSBuild Projects="D:\Desktop\Documents\Embarcadero\Studio\Projects\Test\WolkowProjectTests.dproj"/>
+    </Target>
+    <Target Name="WolkowProjectTests:Clean">
+        <MSBuild Projects="D:\Desktop\Documents\Embarcadero\Studio\Projects\Test\WolkowProjectTests.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="WolkowProjectTests:Make">
+        <MSBuild Projects="D:\Desktop\Documents\Embarcadero\Studio\Projects\Test\WolkowProjectTests.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="WolkowProject;WolkowProjectTests"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="WolkowProject:Clean;WolkowProjectTests:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="WolkowProject:Make;WolkowProjectTests:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
